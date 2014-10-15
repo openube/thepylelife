@@ -227,7 +227,7 @@ POST
 ******************/
 /* images */
 .post-image-container {
-    height: 400px;
+    max-height: 400px;
     margin-bottom: 20px;
     max-width: 1280px;
     overflow: hidden;
