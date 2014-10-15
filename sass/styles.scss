@@ -1,0 +1,424 @@
+/******************
+COMPASS IMPORTS
+******************/
+@import "compass/css3";
+
+/******************
+THIRD PARTY CSS
+******************/
+@import "_pgwslider.scss";
+
+/******************
+FONTS
+******************/
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic);
+
+/******************
+SASS VARIABLES
+******************/
+$darkBeige: #F0EDBB;
+$orange: #FF3800;
+$darkBlue: #00585F;
+$lightBlue: #009393;
+
+$lightGrey: #eee;
+$darkGrey: #ccc;
+$text: #444;
+/******************
+HELPER CLASSES
+******************/
+/* effects */
+.box-shadow-bottom {
+    position: relative;
+    &:before {
+        content:'';
+        display:block;
+        @include box-shadow(grey 0px 2px 3px);
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+    }
+}
+/* hover captions */
+.hover-link:hover {
+    img {
+        @include transform2d(scale(1.4));
+    }
+    figcaption {
+        opacity: 1;
+        p {
+            @include transform2d(translateY(40px));
+        }
+    }
+}
+figure {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+        img {
+            @include transition-property(all);
+            @include transition-duration(300ms);
+        }
+}
+figcaption {
+    align-items: center;
+    background: rgba(0,0,0,.8);
+    color: white;
+    display: flex;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    @include transition-property(all);
+    @include transition-duration(300ms);
+    @include transition-delay(100ms);
+    @include transition-timing-function(ease-out);
+    p {
+        font-size: 1.5em;
+        position: relative;
+        text-align: center;
+        text-indent: 0;
+        top: -40px;
+        width: 100%;
+        @include transition-property(all);
+        @include transition-duration(300ms);
+    }
+}
+/* sizing */
+.bottom-margin {
+    margin-bottom: 30px;
+}
+/* positioning */
+.fixed {
+    position: fixed;
+    z-index: 10;
+}
+.fixed-top {
+    top: 15px;
+}
+.fixed-right {
+    right: 15px;
+}
+.fixed-right-flush {
+    right: 0;
+}
+/******************
+GLOBAL STYLES
+******************/
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    padding-top: 25px;
+    color: $text;
+    font-family: 'Lato';
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: .5px;
+    word-spacing: 2px;
+    line-height: 25px;
+}
+a {
+    color: $darkBlue;
+    &:hover {
+        color: $lightBlue;
+        text-decoration: none;
+    }
+}
+h1,h2,h3,h4,h5 {
+    font-weight: 400;
+}
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 2.5em;
+}
+h3 {
+    font-size: 2em;
+}
+h4 { 
+    font-size: 1.5em;
+}
+h5 {
+    font-size: 1em;
+}
+img {
+    max-width: 100%;
+}
+p {
+    text-indent: 15px;
+    margin-bottom: 20px;
+}
+small {
+    font-size: .75em;
+}
+/******************
+HEADER
+******************/
+@mixin input-placeholder-color($color) {
+    ::-webkit-input-placeholder {
+       color: $color;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+       color: $color;  
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: $color;  
+    }
+    :-ms-input-placeholder {  
+       color: $color;  
+    }
+}
+
+.nav {
+    background: $lightGrey;
+    li {
+        a {
+            font-weight: normal;
+            &:hover {
+                background: $darkGrey;  
+            }
+        }
+    }
+}
+.title {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.search-container {
+    width: 182px;
+    .glyphicon {
+        position: absolute;
+        top: 5px;
+        right: 0;
+        &:hover {
+            color: $orange;
+            cursor: pointer;
+        }
+    }
+    .form-control#search, .form-control#search:active {
+        background: none;
+        display: none;
+        outline: none;
+        width: 157px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        @include border-radius(0);
+        @include box-shadow(white 0px 0px 0px);
+    }
+    .form-control#search:focus {
+        @include box-shadow(white 0px 0px 0px);
+    }
+    @include input-placeholder-color($orange);
+}
+
+
+/******************
+POST
+******************/
+/* images */
+.post-image-container {
+    height: 400px;
+    margin-bottom: 20px;
+    max-width: 1280px;
+    overflow: hidden;
+    width: 100%;
+}
+.img-featured {
+    height: 650px;
+    overflow: hidden;
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+/* text */
+.date {
+    text-transform: lowercase;
+    color: $darkGrey;
+}
+/* positioning */
+.post {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+.post-title {
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+/* comments */
+.comments {
+    border-left: 1px solid $darkGrey;
+    padding-left: 10px;
+    
+    input[type='submit'] {
+        margin: 10px 0;
+    }
+}
+.parent:nth-of-type(odd) {
+    background: $lightGrey;
+}
+.comment {
+    padding: 15px;
+    
+    .vcard img {
+        float: left;
+        margin: 0 15px 0 0;
+    }
+    p {
+        margin-bottom: 0;
+    }
+}
+/******************
+PAGE
+******************/
+.page {
+    .container {
+        margin-top: 20px;
+    }
+}
+/* timeline */
+body.page-template-timeline-php {
+    background: black;
+    padding-top: 0;
+    .menu-mini {
+        text-shadow: 1px 1px white;
+        a:hover {
+            color: $orange;
+        }
+    }
+}
+.timeline-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.sidebar-nav {
+    background: white;
+    width: 120px;
+    right: -120px;
+    top: 25px;
+    padding: 10px 15px 0px;
+    color: white;
+    -webkit-border-top-left-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    border-top-left-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    border-bottom-left-radius: 20px;
+    &:hover {
+        .glyphicon {
+            color: $orange;
+        }
+    }
+    .glyphicon {
+        position: absolute;
+        top: 45%;
+        left: -25px;
+        &:hover {
+            cursor: pointer;
+            color: $orange;
+        }
+    }
+}
+/* events */
+.event-item img {
+    border: 2px solid rgba(255,255,255,0);
+    &:hover {
+        border: 2px solid $orange;
+    }
+}
+
+/* archive and search results */
+.archive, .search {
+    h2 {
+        text-align: center;
+    }
+}
+/*****************
+WORDPRESS STYLES
+******************/
+.aligncenter {
+    margin: 0 auto;
+    text-align: center;
+}
+.container {
+    margin-bottom: 25px;
+}
+/******************
+MEDIA QUERIES
+******************/
+
+/******** Phone Break **********/
+@media all and (max-width: 450px) {
+/* global styles */
+    body {
+        padding-top: 0;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    h3 {
+        font-size: 1.3em;
+    }
+    h4 { 
+        font-size: 1.2em;
+    }
+    h5 {
+        font-size: 1.1em;
+    }
+/* header */
+    header {
+        padding-top: 5px;
+    }
+    .search-container {
+        width: 100%;
+        .form-control#search, 
+        .form-control#search:active {
+            background: white;
+            width: 100%;
+        }
+    }
+    
+    .title {
+        margin: 0 0 5px 5px;
+        text-align: left;
+    }
+    
+/* helper classes - positioning */
+    .fixed-top {
+        top: 0px;
+    }
+    .fixed-right {
+        right: 0px;
+    }
+    
+/* helper classes - sizing */
+    .bottom-margin {
+        margin-bottom: 0;
+    }
+
+/* page - events */
+    .event-item {
+        text-align: center;
+    }
+}
+/******** Tablet Break **********/
+@media all and (max-width: 1190px) {
+    /* helper classes - hover captions */
+    .hover-link div {
+        margin-bottom: 30px;
+    }
+}

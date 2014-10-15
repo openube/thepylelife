@@ -1,0 +1,1 @@
+<div class="img-featured" style="background: url(<?php echo_thumbnail_url() ?>) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>
