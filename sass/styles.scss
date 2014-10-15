@@ -232,6 +232,9 @@ POST
     max-width: 1280px;
     overflow: hidden;
     width: 100%;
+    img {
+        width: 100%;
+    }
 }
 .img-featured {
     height: 650px;
