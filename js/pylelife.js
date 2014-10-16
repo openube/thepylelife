@@ -32,5 +32,16 @@ $(document).ready(function() {
     $('.search-container .glyphicon').click(function() {
         $('#search').toggle().focus();
     });
+    
+    $('.post-image-container a').click(function( event ) {
+        event.preventDefault();
+        var container = $(this).parent();
+        if ( container.css('max-height') == '400px' ) {
+            container.css('max-height', 'none');
+        }
+        else {
+            container.css('max-height', '400px');
+        }
+    });
         
 });
